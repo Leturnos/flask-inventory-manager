@@ -11,9 +11,9 @@
     <h1 id="title_1">PROGRAMA TESTE</h1>
     </header>
 
-    <main onload="return BuscarDados()">
+    <main>
     <div class="main__container">
-        <form action="back.py/adicionar" method="post" onsubmit="return Adicionado()">
+        <form action="/adicionar" method="post">
             <input type="text" name="item" id="iname" placeholder="Nome do item a ser adicionado" required>
             <label for="item"></label>
 
@@ -28,7 +28,12 @@
         <div id="results"></div>
     </div>
     <div>
-
+        <h1>Lista de Produtos</h1>
+        <ul>
+            {% for p in produtos %}
+                <li>{{ p.id }} - {{ p.nome }} - {{ p.valor }} - {{ p.data }}</li>
+            {% endfor %}
+        </ul>
     </div>
     </main>
 
