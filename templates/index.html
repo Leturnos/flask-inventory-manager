@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Programa teste</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
     <h1 id="title_1">PROGRAMA TESTE</h1>
     </header>
 
-    <main>
+    <main href="{{ url_for('home') }}">
     <div class="main__container">
         <form action="/adicionar" method="post">
             <input type="text" name="item" id="iname" placeholder="Nome do item a ser adicionado" required>
@@ -25,21 +25,21 @@
         <div>
             <input type="text" name="search" id="isearch" placeholder="Pesquisar">
         </div>
-        <div id="results"></div>
     </div>
     <div>
+        {% block content %}
         <h1>Lista de Produtos</h1>
         <ul>
             {% for p in produtos %}
-                <li>{{ p.id }} - {{ p.nome }} - {{ p.valor }} - {{ p.data }}</li>
+                <li>{{ p.id }} | {{ p.nome }} : R$ {{ p.valor }} - {{ p.data }}</li>
             {% endfor %}
         </ul>
+        {% endblock %}
     </div>
     </main>
 
     <footer>
 
     </footer>
-    <script src="script.js"></script>
 </body>
 </html>
